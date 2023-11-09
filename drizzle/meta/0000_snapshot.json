@@ -1,0 +1,199 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "2fb36c80-b8d2-4cde-95a4-3bca54f57263",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "holiday_types": {
+      "name": "holiday_types",
+      "columns": {
+        "holiday_id": {
+          "name": "holiday_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "holiday_type_idx": {
+          "name": "holiday_type_idx",
+          "columns": [
+            "type"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "holiday_types_holiday_id_holidays_holiday_id_fk": {
+          "name": "holiday_types_holiday_id_holidays_holiday_id_fk",
+          "tableFrom": "holiday_types",
+          "tableTo": "holidays",
+          "columnsFrom": [
+            "holiday_id"
+          ],
+          "columnsTo": [
+            "holiday_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "holiday_types_holiday_id_type_pk": {
+          "columns": [
+            "holiday_id",
+            "type"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "holidays": {
+      "name": "holidays",
+      "columns": {
+        "holiday_id": {
+          "name": "holiday_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "local_name": {
+          "name": "local_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "country_code": {
+          "name": "country_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fixed": {
+          "name": "fixed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "global": {
+          "name": "global",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "launch_year": {
+          "name": "launch_year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "holidays_holiday_id_unique": {
+          "name": "holidays_holiday_id_unique",
+          "columns": [
+            "holiday_id"
+          ],
+          "isUnique": true
+        },
+        "holiday_date_country_code_idx": {
+          "name": "holiday_date_country_code_idx",
+          "columns": [
+            "date",
+            "country_code"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "province_holidays": {
+      "name": "province_holidays",
+      "columns": {
+        "holiday_id": {
+          "name": "holiday_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "province": {
+          "name": "province",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "province_holidays_idx": {
+          "name": "province_holidays_idx",
+          "columns": [
+            "province"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "province_holidays_holiday_id_holidays_holiday_id_fk": {
+          "name": "province_holidays_holiday_id_holidays_holiday_id_fk",
+          "tableFrom": "province_holidays",
+          "tableTo": "holidays",
+          "columnsFrom": [
+            "holiday_id"
+          ],
+          "columnsTo": [
+            "holiday_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "province_holidays_holiday_id_province_pk": {
+          "columns": [
+            "holiday_id",
+            "province"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
